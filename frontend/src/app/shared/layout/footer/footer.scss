@@ -1,0 +1,107 @@
+@import "../../../../../assets/styles/variables";
+
+footer.footer {
+  padding: 53px 0 54px 0;
+  background-color: #B9D5FD;
+
+  .container {
+    .footer-top-content {
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+
+      .footer-menu {
+        margin-left: 40px;
+
+        nav ul {
+          margin: 0;
+          padding: 0;
+          display: flex;
+          align-items: center;
+
+          li {
+            list-style: none;
+            margin-right: 20px;
+
+            &.active {
+              border-bottom: 1px solid #709FDC;
+            }
+
+            a {
+              font-size: 16px;
+              color: $dark-blue-color;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+    .footer-bottom-content {
+      display: flex;
+      align-items: baseline;
+      gap: 60px;
+      margin-bottom: 6px;
+
+      .footer-title {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        color: #709FDC;
+        margin-bottom: 10px;
+
+        &.socials {
+          margin-bottom: 15px;
+        }
+      }
+
+      .footer-text {
+        color: $dark-blue-color;
+        font-size: 16px;
+      }
+
+      .footer-address {
+        max-width: 253px;
+      }
+
+      .footer-phone {
+        max-width: 153px;
+        .footer-text {
+          a {
+            text-decoration: none;
+            color: $dark-blue-color;
+          }
+          margin-bottom: 10px;
+        }
+
+        .footer-button {
+          width: 153px;
+          height: 36px;
+        }
+      }
+
+      .footer-email {
+        max-width: 127px;
+
+        .footer-text {
+          a {
+            text-decoration: none;
+            color: $dark-blue-color;
+          }
+        }
+      }
+
+      .footer-socials {
+        max-width: 203px;
+        .footer-socials-icons {
+          a {
+            margin-right: 12px;
+          }
+        }
+      }
+    }
+    .copyright {
+      color: $light-blue-color;
+      font-size: 16px;
+    }
+  }
+}

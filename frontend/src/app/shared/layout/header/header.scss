@@ -1,0 +1,68 @@
+@import "../../../../../assets/styles/variables";
+
+header.header {
+  padding: 40px 0;
+
+  .container {
+    display: flex;
+    .header-content {
+      display: flex;
+      align-items: center;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+
+      .header-menu {
+        margin-left: 100px;
+        margin-right: 227px;
+        nav ul {
+          margin: 0;
+          padding: 0;
+          display: flex;
+          align-items: center;
+
+          li {
+            list-style: none;
+            margin-right: 30px;
+
+            &.active {
+              border-bottom: 1px solid #709FDC;
+            }
+
+            a {
+              color: $dark-blue-color;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .header-actions-phone {
+          color: $light-blue-color;
+          text-decoration: none;
+          margin-right: 141px;
+        }
+
+        .header-actions-auth {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          text-decoration: none;
+
+          svg {
+            margin-right: 7px;
+          }
+
+          span {
+            color: $dark-blue-color;
+          }
+        }
+      }
+    }
+  }
+}
