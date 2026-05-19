@@ -1,0 +1,81 @@
+<section class="signup" [formGroup]="signupForm">
+  <div class="container">
+    <div class="auth-form">
+      <div class="auth-title">
+        Регистрация на сайте
+      </div>
+      <div class="auth-inputs">
+        <div class="auth-input">
+          <input type="text" class="input"
+                 formControlName="name"
+                 [ngStyle]="{'border-color': name?.invalid
+                 &&  (name?.dirty ||  name?.touched) ? 'red' : ''}"
+                 placeholder="Ваше имя">
+          @if (name?.invalid && name?.touched) {
+            <div class="error-messages">
+              @if (name?.errors?.['required']) {
+                <small>Введите имя</small>
+              }
+              @if (name?.errors?.['pattern']) {
+                <small>Имя должно содержать только русские буквы</small>
+              }
+            </div>
+          }
+        </div>
+        <div class="auth-input">
+          <input type="email" class="input"
+                 formControlName="email"
+                 [ngStyle]="{'border-color': email?.invalid
+                 &&  (email?.dirty ||  email?.touched) ? 'red' : ''}"
+                 placeholder="Электронная почта">
+          @if (email?.invalid && email?.touched) {
+            <div class="error-messages">
+              @if (email?.errors?.['required']) {
+                <small>Введите email</small>
+              }
+            </div>
+          }
+        </div>
+        <div class="auth-input">
+          <input type="password" class="input"
+                 formControlName="password"
+                 [ngStyle]="{'border-color': password?.invalid
+                 &&  (password?.dirty ||  password?.touched) ? 'red' : ''}"
+                 placeholder="Пароль">
+          @if (password?.invalid && password?.touched) {
+            <div class="error-messages">
+              @if (password?.errors?.['required']) {
+                <small>Пароль обязателен</small>
+              }
+              @if (password?.errors?.['pattern']) {
+                <small> Пароль должен содержать хотя бы одну заглавную букву и одну цифру, минимум 8 символов</small>
+              }
+            </div>
+          }
+        </div>
+        <div class="auth-checkbox">
+          <input type="checkbox"
+                 formControlName="agree"
+                 id="agree">
+          <label for="agree">Я принимаю <a>условия пользовательского соглашения</a> и даю <a>согласие на обработку
+            персональных
+            данных.</a></label>
+        </div>
+        @if (agree?.invalid && agree?.touched) {
+          <div class="error-messages">
+            <small>Необходимо принять условия</small>
+          </div>
+        }
+      </div>
+      <div class="auth-button">
+        <button class="button" (click)="signup()">Зарегистрироваться</button>
+      </div>
+      <div class="auth-link">
+        Уже есть аккаунт? <a routerLink="/login">Войдите</a>
+      </div>
+    </div>
+    <div class="page-image">
+      <img src="./images/pages/signup.png" alt="signup">
+    </div>
+  </div>
+</section>

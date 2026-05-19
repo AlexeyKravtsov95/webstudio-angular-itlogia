@@ -46,3 +46,22 @@ app-layout > app-footer {
     transition: .5s;
   }
 }
+
+.input {
+  padding: 18px 20px;
+  border-radius: 3px;
+  border: 1.5px solid $light-blue-color;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: $light-blue-color;
+  background: #fff;
+  outline: none;
+
+  &::placeholder {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #A8ABA7;
+  }
+}

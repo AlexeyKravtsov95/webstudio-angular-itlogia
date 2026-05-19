@@ -1,0 +1,57 @@
+<section class="login" [formGroup]="loginForm">
+  <div class="container">
+    <div class="auth-form">
+      <div class="auth-title">
+        Войти в личный кабинет
+      </div>
+      <div class="auth-inputs">
+        <div class="auth-input">
+          <input type="email" class="input"
+                 formControlName="email"
+                 [ngStyle]="{'border-color': email?.invalid
+                 &&  (email?.dirty ||  email?.touched) ? 'red' : ''}"
+                 placeholder="Электронная почта">
+          @if (email?.invalid && email?.touched) {
+            <div class="error-messages">
+              @if (email?.errors?.['required']) {
+                <small>Введите email</small>
+              }
+            </div>
+          }
+        </div>
+        <div class="auth-input">
+          <input type="password" class="input"
+                 formControlName="password"
+                 [ngStyle]="{'border-color': password?.invalid
+                 &&  (password?.dirty ||  password?.touched) ? 'red' : ''}"
+                 placeholder="Пароль">
+          @if (password?.invalid && password?.touched) {
+            <div class="error-messages">
+              @if (password?.errors?.['required']) {
+                <small>Пароль обязателен</small>
+              }
+              @if (password?.errors?.['pattern']) {
+                <small> Пароль должен содержать хотя бы одну заглавную букву и одну цифру, минимум 8 символов</small>
+              }
+            </div>
+          }
+        </div>
+        <div class="auth-checkbox">
+          <input type="checkbox"
+                 formControlName="remember"
+                 id="remember">
+          <label for="remember">Запомнить меня</label>
+        </div>
+      </div>
+      <div class="auth-button">
+        <button class="button">Зарегистрироваться</button>
+      </div>
+      <div class="auth-link">
+        Нет аккаунта? <a routerLink="/signup">Пройдите регистрацию</a>
+      </div>
+    </div>
+    <div class="page-image">
+      <img src="./images/pages/login.png" alt="login">
+    </div>
+  </div>
+</section>
