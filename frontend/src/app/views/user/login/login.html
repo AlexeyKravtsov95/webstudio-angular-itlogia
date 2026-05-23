@@ -38,20 +38,20 @@
         </div>
         <div class="auth-checkbox">
           <input type="checkbox"
-                 formControlName="remember"
+                 formControlName="rememberMe"
                  id="remember">
           <label for="remember">Запомнить меня</label>
         </div>
       </div>
       <div class="auth-button">
-        <button class="button">Зарегистрироваться</button>
+        <button class="button" (click)="login()">Зарегистрироваться</button>
       </div>
       <div class="auth-link">
         Нет аккаунта? <a routerLink="/signup">Пройдите регистрацию</a>
       </div>
     </div>
     <div class="page-image">
-      <img src="./images/pages/login.png" alt="login">
+      <img src="./images/pages/auth/login.png" alt="login">
     </div>
   </div>
 </section>

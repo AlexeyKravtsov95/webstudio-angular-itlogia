@@ -9,6 +9,12 @@ html, body {
   height: 100%;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 app-layout {
   display: flex;
   flex-direction: column;
@@ -48,7 +54,9 @@ app-layout > app-footer {
 }
 
 .input {
-  padding: 18px 20px;
+  width: 422px;
+  height: 53px;
+  padding: 0 20px;
   border-radius: 3px;
   border: 1.5px solid $light-blue-color;
   font-family: 'Montserrat', sans-serif;
@@ -63,5 +71,51 @@ app-layout > app-footer {
     font-weight: 400;
     font-size: 14px;
     color: #A8ABA7;
+  }
+}
+
+.main-banners {
+  .owl-theme .owl-carousel-inner .owl-next,
+  .owl-theme .owl-carousel-inner .owl-prev {
+    position: absolute;
+
+    width: 28px;
+    height: 15px;
+
+    background-color: transparent;
+    background-image: url("../images/pages/main/arrow.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    top: 53%;
+    cursor: pointer;
+  }
+
+  .owl-theme .owl-carousel-inner .owl-prev {
+    left: 0;
+  }
+
+  .owl-theme .owl-carousel-inner .owl-next {
+    right: 0;
+    transform: rotate(180deg);
+  }
+
+  .owl-dots {
+    position: absolute;
+    left: calc(50% - 24px);
+    bottom: 20px;
+    z-index: 10;
+    margin-top: 0 !important;
+  }
+
+  .owl-dots .owl-dot span {
+    background: transparent !important;
+    border: 1px solid #fff;
+  }
+
+  .owl-dots .owl-dot.active span {
+    background: #ffffff !important;
+    opacity: 1;
   }
 }

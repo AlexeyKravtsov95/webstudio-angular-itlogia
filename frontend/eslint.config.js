@@ -31,6 +31,13 @@ module.exports = defineConfig([
           style: 'kebab-case',
         },
       ],
+      '@typescript-eslint/no-inferrable-types': [
+        'error',
+        {
+          ignoreParameters: true,
+          ignoreProperties: true,
+        },
+      ],
     },
   },
   {
