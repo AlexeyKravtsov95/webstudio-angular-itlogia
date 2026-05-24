@@ -38,6 +38,7 @@ module.exports = defineConfig([
           ignoreProperties: true,
         },
       ],
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
   {

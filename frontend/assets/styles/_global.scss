@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 html, body {
   margin: 0;
@@ -118,4 +119,48 @@ app-layout > app-footer {
     background: #ffffff !important;
     opacity: 1;
   }
+}
+
+.popup {
+  width: 100%;
+  min-height: 489px;
+  padding: 95px 0;
+  position: relative;
+  border-radius: 10px;
+  border: 1px solid $light-blue-color;
+  box-sizing: border-box;
+
+  .popup-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+  }
+
+  .popup-title {
+    @include head-lora-38;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .auth-form {
+    margin: 0 !important;
+    justify-items: center;
+  }
+}
+
+.order-popup-dialog {
+  .mat-mdc-dialog-container {
+    padding: 0;
+  }
+
+  .mat-mdc-dialog-surface {
+    border-radius: 10px;
+    overflow: visible;
+    box-shadow: none;
+  }
+}
+
+.order-popup-backdrop {
+  background: rgba(0, 0, 0, 0.45);
 }
