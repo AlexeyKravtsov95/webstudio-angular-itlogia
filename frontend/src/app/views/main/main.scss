@@ -4,6 +4,7 @@
 
 .main {
   padding-bottom: 60px;
+
   .container {
     .main-banners {
       position: relative;
@@ -94,15 +95,18 @@
 
 .offers {
   padding: 60px 0;
+
   .container {
     .offers-title {
       @include head-lora-38;
       margin-bottom: 40px;
     }
+
     .offers-items {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
+
       .offers-item {
         width: 290px;
 
@@ -145,6 +149,126 @@
             font-size: 16px;
           }
         }
+      }
+    }
+  }
+}
+
+.about {
+  padding: 60px 0;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    .about-image {
+      min-width: 460px;
+      height: 453px;
+      border-radius: 5px;
+      margin-right: 68px;
+    }
+
+    .about-wrapper {
+      .about-title {
+        @include head-lora-38;
+        margin-bottom: 20px;
+      }
+
+      .about-text {
+        font-size: 14px;
+        color: $dark-blue-color;
+        line-height: 130%;
+        max-width: 633px;
+        margin-bottom: 40px;
+
+        span {
+          font-weight: 500;
+        }
+      }
+
+      .about-items-title {
+        font-family: "Lora", sans-serif;
+        font-weight: 400;
+        font-size: 26px;
+        color: $light-blue-color;
+        margin-bottom: 20px;
+      }
+
+      .about-items {
+        display: grid;
+        grid-template-columns: repeat(2, 316px);
+        grid-template-rows: repeat(2, 90px);
+        gap: 20px 71px;
+
+        .about-item {
+          display: flex;
+          align-items: center;
+
+          .about-item-count {
+            position: relative;
+            font-family: "Lora", sans-serif;
+            font-weight: 500;
+            font-size: 50px;
+            color: $light-blue-color;
+            z-index: 0;
+            text-align: center;
+            margin-right: 22px;
+            width: 40px;
+
+            &:before {
+              content: "";
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              background: #B9D5FD;
+              position: absolute;
+              top: calc(50% - 15px);
+              left: calc(50% - 20px);
+              z-index: -1;
+            }
+          }
+
+          .about-item-text {
+            width: 256px;
+            line-height: 130%;
+            color: $dark-blue-color;
+            font-size: 14px;
+
+            span {
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.articles {
+  padding: 60px 0;
+
+  .container {
+    .articles-title {
+      @include head-lora-38;
+      margin-bottom: 40px;
+    }
+
+    .articles-items {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    .articles-action {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      text-decoration: none;
+      cursor: pointer;
+      span {
+        font-weight: 500;
+        font-size: 20px;
+        color: $light-blue-color;
+        margin-right: 14px;
       }
     }
   }

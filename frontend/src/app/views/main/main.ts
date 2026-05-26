@@ -1,18 +1,41 @@
-import { Component, inject, TemplateRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnInit,
+  signal,
+  TemplateRef,
+  ViewChild,
+  WritableSignal,
+} from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { BannerSlide } from '../../types/banner.interface';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgStyle } from '@angular/common';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { OfferInterface } from '../../types/offer.interface';
+import { AboutInterface } from '../../types/about.interface';
+import { ABOUTS, BANNERS, OFFERS } from './main.data';
+import { ArticlesInterface } from '../../types/articles.interface';
+import { ArticlesService } from '../../shared/services/articles';
+import { environment } from '../../../environments/environment.development';
+import { ArticleCard } from '../../shared/components/article-card/article-card';
 
 @Component({
   selector: 'app-main',
-  imports: [CarouselModule, FormsModule, ReactiveFormsModule, NgStyle, MatDialogModule],
+  imports: [
+    CarouselModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgStyle,
+    MatDialogModule,
+    ArticleCard,
+    RouterLink,
+  ],
   templateUrl: './main.html',
   styleUrl: './main.scss',
 })
-export class Main {
+export class Main implements OnInit {
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -30,71 +53,17 @@ export class Main {
     nav: true,
   };
 
-  banners: BannerSlide[] = [
-    {
-      id: 1,
-      category: 'Предложение месяца',
-      title: [
-        { text: 'Продвижение в Instagram для вашего бизнеса ' },
-        { text: '-15%!', accent: true },
-      ],
-      image: './images/pages/main/banner1.png',
-      imageDesc: 'Banner1',
-    },
-    {
-      id: 2,
-      category: 'Акция',
-      title: [{ text: 'Нужен грамотный ' }, { text: 'копирайтер', accent: true }, { text: '?' }],
-      text: 'Весь декабрь у нас действует акция на работу копирайтера.',
-      image: './images/pages/main/banner2.png',
-      imageDesc: 'Banner2',
-    },
-    {
-      id: 3,
-      category: 'Новость дня',
-      title: [{ text: '6 место', accent: true }, { text: ' в ТОП-10 SMM-агенств Москвы!' }],
-      text: 'Мы благодарим каждого, кто голосовал за нас!',
-      image: './images/pages/main/banner3.png',
-      imageDesc: 'Banner3',
-    },
-  ];
-
-  offers = [
-    {
-      id: 1,
-      image: './images/pages/main/offer1.png',
-      title: 'Создание сайтов',
-      text: 'В краткие сроки мы создадим качественный и самое главное продающий сайт для продвижения Вашего бизнеса!',
-      price: 'От 7 500₽',
-    },
-    {
-      id: 2,
-      image: './images/pages/main/offer2.png',
-      title: 'Продвижение',
-      text: 'Вам нужен качественный SMM-специалист или грамотный таргетолог? Мы готовы оказать Вам услугу “Продвижения” на наивысшем уровне!',
-      price: 'От 3 500₽',
-    },
-    {
-      id: 3,
-      image: './images/pages/main/offer3.png',
-      title: 'Реклама',
-      text: 'Без рекламы не может обойтись ни один бизнес или специалист. Обращаясь к нам, мы гарантируем быстрый прирост клиентов за счёт правильно настроенной рекламы.',
-      price: 'От 1 000₽',
-    },
-    {
-      id: 4,
-      image: './images/pages/main/offer4.png',
-      title: 'Копирайтинг',
-      text: 'Наши копирайтеры готовы написать Вам любые продающие текста, которые не только обеспечат рост охватов, но и помогут выйти на новый уровень в продажах.',
-      price: 'От 750₽',
-    },
-  ];
+  banners: BannerSlide[] = BANNERS;
+  offers: OfferInterface[] = OFFERS;
+  abouts: AboutInterface[] = ABOUTS;
+  articles: WritableSignal<ArticlesInterface[]> = signal<ArticlesInterface[]>([]);
 
   @ViewChild('popup') popup!: TemplateRef<unknown>;
   fb: FormBuilder = inject(FormBuilder);
   dialogRef: MatDialogRef<any> | null = null;
   dialog: MatDialog = inject(MatDialog);
   router: Router = inject(Router);
+  articlesService: ArticlesService = inject(ArticlesService);
 
   orderForm = this.fb.group({
     service: [''],
@@ -107,6 +76,12 @@ export class Main {
       ],
     ],
   });
+
+  ngOnInit() {
+    this.articlesService.getTopArticles().subscribe((data: ArticlesInterface[]) => {
+      this.articles.set(data);
+    });
+  }
 
   get name() {
     return this.orderForm.get('name');
@@ -139,6 +114,4 @@ export class Main {
     this.dialogRef?.close();
     this.router.navigate(['/']).then();
   }
-
-  protected readonly close = close;
 }

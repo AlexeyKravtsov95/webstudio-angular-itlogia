@@ -1,0 +1,16 @@
+<div class="article">
+    <div class="articles-item-image"
+         [style.background-image]="'url(' + serverStaticPath + article.image + ')'"
+    >
+      <div class="articles-item-image-page">
+        {{ article.category }}
+      </div>
+    </div>
+    <div class="articles-item-title">
+      {{ article.title }}
+    </div>
+    <div class="articles-item-text">
+      {{ article.description }}
+    </div>
+    <a href="#" class="articles-item-more">Читать далее</a>
+</div>

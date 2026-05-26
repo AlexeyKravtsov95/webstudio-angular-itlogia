@@ -66,14 +66,63 @@
   </div>
 </section>
 
+<section class="about">
+  <div class="container">
+    <div class="about-image">
+      <img src="./images/pages/main/about.png" alt="About">
+    </div>
+    <div class="about-wrapper">
+      <div class="about-title">Кто мы и чем мы занимаемся?</div>
+      <div class="about-text"><span>АйтиШторм</span> — это ваш помощник №1 при решении таких вопросов, как продвижение в
+        сети,
+        разработка сайтов для бизнеса и личного бренда, сторисмейкинг, копирайтинг, маркетинг, разработка визуальной
+        концепции и создание инфопродуктов. Компания была основана в 2019 году и за всё это время смогла выйти в ТОП-10
+        агенств, предлагающих услуги продвижения в сети.
+      </div>
+      <div class="about-items-title">Наши преимущества</div>
+      <div class="about-items">
+        @for (about of abouts; track about.id) {
+          <div class="about-item">
+            <div class="about-item-count">
+              {{ about.id }}
+            </div>
+            <div class="about-item-text">
+              <span>{{ about.accentText }}</span> {{ about.text }}
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="articles">
+  <div class="container">
+    <div class="articles-title">
+      Популярные статьи из блога
+    </div>
+    <div class="articles-items">
+      @for (article of articles(); track article.id) {
+        <app-article-card [article]="article"></app-article-card>
+      }
+    </div>
+    <a routerLink="/blog" class="articles-action">
+      <span>Перейти в блок</span>
+      <svg width="7" height="14" viewBox="0 0 7 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.608961 0C0.763747 0 0.918533 0.0565243 1.04073 0.177649L6.35234 5.44254C7.21589 6.29849 7.21589 7.70353 6.35234 8.55948L1.04073 13.8244C0.80448 14.0585 0.413442 14.0585 0.177189 13.8244C-0.0590634 13.5902 -0.0590634 13.2026 0.177189 12.9684L5.4888 7.70353C5.87984 7.31593 5.87984 6.68608 5.4888 6.29849L0.177189 1.0336C-0.0590634 0.799424 -0.0590634 0.411823 0.177189 0.177649C0.299388 0.064599 0.454175 0 0.608961 0Z" fill="#709FDC"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
 <ng-template #popup>
   <div class="popup">
-    <div class="popup-close" (click)="closePopup()">
+    <button class="popup-close" (click)="closePopup()">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
         <line x1="0.935622" y1="0.649994" x2="12.9564" y2="12.6708" stroke="#BEBEBE" stroke-linecap="round"/>
         <line x1="12.9236" y1="0.629775" x2="0.902769" y2="12.6506" stroke="#BEBEBE" stroke-linecap="round"/>
       </svg>
-    </div>
+    </button>
     <div class="popup-title">Заявка на услугу</div>
     <div class="auth-form" [formGroup]="orderForm">
       <div class="auth-inputs">

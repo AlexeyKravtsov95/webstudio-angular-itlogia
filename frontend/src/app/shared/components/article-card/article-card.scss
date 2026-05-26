@@ -1,0 +1,60 @@
+@import "../../../../../assets/styles/variables";
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.article {
+  width: 292px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .articles-item-image {
+    position: relative;
+    width: 291px;
+    height: 291px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    flex-shrink: 0;
+
+    .articles-item-image-page {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      padding: 10px 18px;
+      border-radius: 5px;
+      font-size: 11px;
+      color: $light-blue-color;
+    }
+  }
+
+  .articles-item-title {
+    font-weight: 500;
+    height: 52px;
+    overflow: hidden;
+    color: $light-blue-color;
+    line-height: 130%;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .articles-item-text {
+    height: 108px;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 130%;
+    color: $dark-blue-color;
+    margin-bottom: 64px;
+  }
+
+  .articles-item-more {
+    margin-top: auto;
+    font-size: 16px;
+    color: $light-blue-color;
+  }
+}
