@@ -57,9 +57,23 @@
           <input type="checkbox"
                  formControlName="agree"
                  id="agree">
-          <label for="agree">Я принимаю <a>условия пользовательского соглашения</a> и даю <a>согласие на обработку
-            персональных
-            данных.</a></label>
+          <label for="agree">Я принимаю <a routerLink="/policy"
+                                           fragment="user-agreement"
+                                           target="_blank"
+                                           rel="noopener noreferrer">
+            условия пользовательского соглашения
+          </a>
+            и даю
+            <a
+              routerLink="/policy"
+              fragment="personal-data"
+              target="_blank"
+              rel="noopener noreferrer">
+              согласие на обработку
+              персональных
+              данных.
+            </a>
+          </label>
         </div>
         @if (agree?.invalid && agree?.touched) {
           <div class="error-messages">

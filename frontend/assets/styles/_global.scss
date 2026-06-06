@@ -166,3 +166,70 @@ app-layout > app-footer {
 .order-popup-backdrop {
   background: rgba(0, 0, 0, 0.45);
 }
+
+.reviews-items {
+  .owl-theme .owl-carousel-inner .owl-next,
+  .owl-theme .owl-carousel-inner .owl-prev {
+    position: absolute;
+
+    width: 28px;
+    height: 15px;
+
+    background-color: transparent;
+    background-image: url("../images/pages/main/arrow2.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    top: 53%;
+    cursor: pointer;
+  }
+
+  .owl-theme .owl-carousel-inner .owl-prev {
+    left: -30px;
+  }
+
+  .owl-theme .owl-carousel-inner .owl-next {
+    right: -30px;
+    transform: rotate(180deg);
+  }
+
+  .owl-dots {
+    position: absolute;
+    left: calc(50% - 24px);
+    bottom: -30px;
+    z-index: 10;
+    margin-top: 0 !important;
+  }
+
+  .owl-dots .owl-dot span {
+    background: transparent !important;
+    border: 1px solid $light-blue-color;
+  }
+
+  .owl-dots .owl-dot.active span {
+    background: $light-blue-color !important;
+    opacity: 1;
+  }
+}
+
+.mat-mdc-menu-content {
+  background-color: #fff;
+}
+
+.mat-mdc-menu-panel {
+  min-width: 150px !important;
+  margin-top: 8px;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+
+  .mat-mdc-menu-item-text {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: $dark-blue-color !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    transition: background-color 0.2s ease !important;
+  }
+}

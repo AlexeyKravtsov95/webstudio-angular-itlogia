@@ -5,16 +5,18 @@ header.header {
 
   .container {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+
     .header-content {
       display: flex;
       align-items: center;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      font-size: 16px;
 
       .header-menu {
         margin-left: 100px;
-        margin-right: 227px;
         nav ul {
           margin: 0;
           padding: 0;
@@ -32,35 +34,35 @@ header.header {
             a {
               color: $dark-blue-color;
               text-decoration: none;
+              white-space: nowrap;
             }
           }
         }
       }
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-      .header-actions {
+      .header-actions-phone {
+        color: $light-blue-color;
+        text-decoration: none;
+        margin-right: 141px;
+      }
+
+      .header-actions-auth {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        cursor: pointer;
+        text-decoration: none;
 
-        .header-actions-phone {
-          color: $light-blue-color;
-          text-decoration: none;
-          margin-right: 141px;
+        svg {
+          margin-right: 7px;
         }
 
-        .header-actions-auth {
-          display: flex;
-          align-items: center;
-          cursor: pointer;
-          text-decoration: none;
-
-          svg {
-            margin-right: 7px;
-          }
-
-          span {
-            color: $dark-blue-color;
-          }
+        span {
+          color: $dark-blue-color;
         }
       }
     }

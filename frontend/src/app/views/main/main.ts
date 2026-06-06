@@ -15,11 +15,11 @@ import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dial
 import { Router, RouterLink } from '@angular/router';
 import { OfferInterface } from '../../types/offer.interface';
 import { AboutInterface } from '../../types/about.interface';
-import { ABOUTS, BANNERS, OFFERS } from './main.data';
+import { ABOUTS, BANNERS, OFFERS, REVIEWS } from './main.data';
 import { ArticlesInterface } from '../../types/articles.interface';
 import { ArticlesService } from '../../shared/services/articles';
-import { environment } from '../../../environments/environment.development';
 import { ArticleCard } from '../../shared/components/article-card/article-card';
+import { ReviewsInterface } from '../../types/reviews.interface';
 
 @Component({
   selector: 'app-main',
@@ -53,9 +53,27 @@ export class Main implements OnInit {
     nav: true,
   };
 
+  customReviewOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    margin: 24,
+    dots: true,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 3,
+      },
+    },
+    nav: true,
+  };
+
   banners: BannerSlide[] = BANNERS;
   offers: OfferInterface[] = OFFERS;
   abouts: AboutInterface[] = ABOUTS;
+  reviews: ReviewsInterface[] = REVIEWS;
   articles: WritableSignal<ArticlesInterface[]> = signal<ArticlesInterface[]>([]);
 
   @ViewChild('popup') popup!: TemplateRef<unknown>;

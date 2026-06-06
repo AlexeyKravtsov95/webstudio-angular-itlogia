@@ -273,3 +273,84 @@
     }
   }
 }
+
+.reviews {
+  padding: 60px 0;
+  .container {
+    .reviews-title {
+      @include head-lora-38;
+      margin-bottom: 20px;
+    }
+    .reviews-items {
+      position: relative;
+      .review-item {
+        padding: 30px;
+        width: 396px;
+        height: 267px;
+        border-radius: 5px;
+        border: 1px solid $light-blue-color;
+        .review-item-header {
+          display: flex;
+          align-items: center;
+          margin-bottom: 15px;
+          .review-item-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-position: center;
+            background-size: cover;
+            margin-right: 26px;
+          }
+          .review-item-author {
+            font-weight: 600;
+            font-size: 18px;
+            color: $light-blue-color;
+          }
+        }
+        .review-item-text {
+          margin-top: 15px;
+          font-size: 16px;
+          line-height: 140%;
+          color: $dark-blue-color;
+        }
+      }
+    }
+  }
+}
+
+.contacts {
+  padding: 60px 0 120px 0;
+  .container {
+    display: flex;
+    .contacts-map {
+      margin-right: 26px;
+    }
+    .contacts-item {
+      padding-top: 10px;
+      .contact-item-title {
+        @include head-lora-38;
+        margin-bottom: 20px;
+      }
+      .contact-subtitle {
+        font-weight: 500;
+        font-size: 20px;
+        color: $light-blue-color;
+        margin-bottom: 10px;
+      }
+      .contact-text {
+        font-size: 14px;
+        color: $dark-blue-color;
+        line-height: 130%;
+        margin-bottom: 20px;
+        a {
+          text-decoration: none;
+          color: $dark-blue-color;
+        }
+      }
+      .contact-social {
+        display: flex;
+        gap: 20px;
+      }
+    }
+  }
+}

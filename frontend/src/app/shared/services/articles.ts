@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment.development';
   providedIn: 'root',
 })
 export class ArticlesService {
-  http: HttpClient = inject(HttpClient);
+  private http: HttpClient = inject(HttpClient);
 
   getTopArticles(): Observable<ArticlesInterface[]> {
     return this.http.get<ArticlesInterface[]>(environment.api + 'articles/top')

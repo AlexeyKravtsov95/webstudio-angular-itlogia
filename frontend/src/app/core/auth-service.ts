@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 import { DefaultResponse } from '../types/default.interface';
 import { LoginResponse } from '../types/login.interface';
 import { environment } from '../../environments/environment.development';
@@ -33,12 +33,16 @@ export class AuthService {
     });
   }
 
-  login(email: string, password: string, rememberMe: boolean): Observable<DefaultResponse | LoginResponse> {
+  login(
+    email: string,
+    password: string,
+    rememberMe: boolean,
+  ): Observable<DefaultResponse | LoginResponse> {
     return this.http.post<DefaultResponse | LoginResponse>(environment.api + 'login', {
       email: email,
       password: password,
       rememberMe: rememberMe,
-    })
+    });
   }
 
   public getIsLoggedIn() {
@@ -75,5 +79,26 @@ export class AuthService {
     } else {
       localStorage.removeItem(this.userIdKey);
     }
+  }
+
+  refresh(): Observable<DefaultResponse | LoginResponse> {
+    const tokens = this.getTokens();
+    if (tokens && tokens.refreshToken) {
+      return this.http.post<DefaultResponse>(environment.api + 'refresh', {
+        refreshToken: tokens.refreshToken,
+      });
+    }
+    throw throwError(() => 'Cant not refresh token');
+  }
+
+  logout(): Observable<DefaultResponse> {
+    const tokens = this.getTokens();
+    if (tokens && tokens.refreshToken) {
+      return this.http.post<DefaultResponse>(environment.api + 'logout', {
+        refreshToken: tokens.refreshToken,
+      });
+    }
+
+    throw throwError(() => 'Cant not find token');
   }
 }

@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DefaultResponse } from '../../../types/default.interface';
 import { LoginResponse } from '../../../types/login.interface';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UserServices } from '../../../shared/services/user-services';
 
 @Component({
   selector: 'app-signup',
@@ -18,6 +19,7 @@ export class Signup {
   fb: FormBuilder = inject(FormBuilder);
   router: Router = inject(Router);
   authService: AuthService = inject(AuthService);
+  userService: UserServices = inject(UserServices);
   _matSnackBar: MatSnackBar = inject(MatSnackBar);
 
   signupForm = this.fb.group({
@@ -57,8 +59,8 @@ export class Signup {
           }
 
           const loginResponse: LoginResponse = data as LoginResponse;
-          if (!(loginResponse).accessToken || !(loginResponse).refreshToken || !(loginResponse).userId) {
-            error = "Ошибка регистрации";
+          if (!loginResponse.accessToken || !loginResponse.refreshToken || !loginResponse.userId) {
+            error = 'Ошибка регистрации';
           }
 
           if (error) {
@@ -67,16 +69,17 @@ export class Signup {
           }
           this.authService.setTokens(loginResponse.accessToken, loginResponse.refreshToken);
           this.authService.userId = loginResponse.userId;
-          this._matSnackBar.open("Успешная регистрация");
+          this._matSnackBar.open('Успешная регистрация');
+          this.userService.getUserData();
           this.router.navigate(['/']).then();
         },
         error: (errorResponse: HttpErrorResponse) => {
           if (errorResponse.error && errorResponse.error.message) {
             this._matSnackBar.open(errorResponse.error.message);
           } else {
-            this._matSnackBar.open("Ошибка регистрации");
+            this._matSnackBar.open('Ошибка регистрации');
           }
-        }
+        },
       });
     }
   }

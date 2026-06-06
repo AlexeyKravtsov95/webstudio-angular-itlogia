@@ -7,6 +7,7 @@ import { LoginResponse } from '../../../types/login.interface';
 import { AuthService } from '../../../core/auth-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UserServices } from '../../../shared/services/user-services';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,7 @@ export class Login {
   router = inject(Router);
   authService: AuthService = inject(AuthService);
   _matSnackBar: MatSnackBar = inject(MatSnackBar);
+  userService: UserServices = inject(UserServices);
 
   loginForm = this.fb.group({
     email: ['', Validators.required],
@@ -65,6 +67,7 @@ export class Login {
             this.authService.setTokens(loginResponse.accessToken, loginResponse.refreshToken);
             this.authService.userId = loginResponse.userId;
             this._matSnackBar.open('Успешная авторизация');
+            this.userService.getUserData();
             this.router.navigate(['/']).then();
           },
           error: (errorResponse: HttpErrorResponse) => {
