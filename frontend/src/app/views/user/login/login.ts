@@ -23,7 +23,7 @@ export class Login {
   userService: UserServices = inject(UserServices);
 
   loginForm = this.fb.group({
-    email: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d).{8,}$/)]],
     rememberMe: [false],
   });
