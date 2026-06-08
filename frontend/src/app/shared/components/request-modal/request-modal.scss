@@ -1,0 +1,32 @@
+@import '../../../../../assets/styles/auth-form';
+@import '../../../../../assets/styles/variables';
+
+.server-error {
+  text-align: center;
+  margin-top: 10px;
+
+  small {
+    color: red;
+    font-size: 12px;
+  }
+}
+
+.popup-success {
+  padding: 95px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  .popup-subtitle {
+    margin-top: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: $dark-blue-color
+  }
+  .popup-success-button {
+    margin-top: 40px;
+    padding: 10px 20px;
+  }
+}

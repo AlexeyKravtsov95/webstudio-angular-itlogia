@@ -20,6 +20,7 @@ import { ArticlesInterface } from '../../types/articles.interface';
 import { ArticlesService } from '../../shared/services/articles';
 import { ArticleCard } from '../../shared/components/article-card/article-card';
 import { ReviewsInterface } from '../../types/reviews.interface';
+import { RequestModalServices } from '../../shared/services/request-modal-services';
 
 @Component({
   selector: 'app-main',
@@ -77,11 +78,11 @@ export class Main implements OnInit {
   articles: WritableSignal<ArticlesInterface[]> = signal<ArticlesInterface[]>([]);
 
   @ViewChild('popup') popup!: TemplateRef<unknown>;
-  fb: FormBuilder = inject(FormBuilder);
-  dialogRef: MatDialogRef<any> | null = null;
-  dialog: MatDialog = inject(MatDialog);
-  router: Router = inject(Router);
-  articlesService: ArticlesService = inject(ArticlesService);
+  private fb: FormBuilder = inject(FormBuilder);
+  private dialogRef: MatDialogRef<any> | null = null;
+  private router: Router = inject(Router);
+  private articlesService: ArticlesService = inject(ArticlesService);
+  private requestModalService: RequestModalServices = inject(RequestModalServices);
 
   orderForm = this.fb.group({
     service: [''],
@@ -109,23 +110,11 @@ export class Main implements OnInit {
     return this.orderForm.get('phone');
   }
 
-  openOrderPopup(title?: string) {
-    if (title) {
-      this.orderForm.setValue({
-        service: title ?? '',
-        name: '',
-        phone: '',
-      });
-    }
-
-    this.dialogRef = this.dialog.open(this.popup, {
-      width: '727px',
-      minHeight: '489px',
-      maxWidth: 'none',
-      panelClass: 'order-popup-dialog',
-      backdropClass: 'order-popup-backdrop',
-      autoFocus: false,
-    });
+  openOrderPopup(service?: string) {
+    this.requestModalService.openOrder(
+      service,
+      this.offers.map((offer) => offer.title)
+    );
   }
 
   closePopup(): void {
