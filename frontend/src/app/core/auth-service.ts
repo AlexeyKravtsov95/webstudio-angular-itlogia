@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, throwError } from 'rxjs';
-import { DefaultResponse } from '../types/default.interface';
-import { LoginResponse } from '../types/login.interface';
+import { DefaultResponse } from '../interfaces/default.interface';
+import { LoginResponse } from '../interfaces/login.interface';
 import { environment } from '../../environments/environment.development';
 
 @Injectable({

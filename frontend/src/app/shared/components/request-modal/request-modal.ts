@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { RequestModalDataInterface, RequestPayload } from '../../../types/request-modal.interface';
+import { RequestModalDataInterface, RequestPayload } from '../../../interfaces/request-modal.interface';
 import { RequestServices } from '../../services/request-services';
 import { NgStyle } from '@angular/common';
 

@@ -8,18 +8,18 @@ import {
   WritableSignal,
 } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
-import { BannerSlide } from '../../types/banner.interface';
+import { BannerSlide } from '../../interfaces/banner.interface';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgStyle } from '@angular/common';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { Router, RouterLink } from '@angular/router';
-import { OfferInterface } from '../../types/offer.interface';
-import { AboutInterface } from '../../types/about.interface';
+import { OfferInterface } from '../../interfaces/offer.interface';
+import { AboutInterface } from '../../interfaces/about.interface';
 import { ABOUTS, BANNERS, OFFERS, REVIEWS } from './main.data';
-import { ArticlesInterface } from '../../types/articles.interface';
+import { ArticlesInterface } from '../../interfaces/articles.interface';
 import { ArticlesService } from '../../shared/services/articles';
 import { ArticleCard } from '../../shared/components/article-card/article-card';
-import { ReviewsInterface } from '../../types/reviews.interface';
+import { ReviewsInterface } from '../../interfaces/reviews.interface';
 import { RequestModalServices } from '../../shared/services/request-modal-services';
 
 @Component({
@@ -60,7 +60,7 @@ export class Main implements OnInit {
     touchDrag: true,
     pullDrag: false,
     margin: 24,
-    dots: true,
+    dots: false,
     navSpeed: 700,
     navText: ['', ''],
     responsive: {

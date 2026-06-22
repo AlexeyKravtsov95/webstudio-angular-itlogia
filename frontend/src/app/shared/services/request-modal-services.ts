@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { RequestModalDataInterface } from '../../types/request-modal.interface';
+import { RequestModalDataInterface } from '../../interfaces/request-modal.interface';
 import { RequestModal } from '../components/request-modal/request-modal';
 
 @Injectable({

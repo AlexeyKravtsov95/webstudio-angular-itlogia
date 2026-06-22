@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
-import { RequestPayload } from '../../types/request-modal.interface';
+import { RequestPayload } from '../../interfaces/request-modal.interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { DefaultResponse } from '../../types/default.interface';
+import { DefaultResponse } from '../../interfaces/default.interface';
 import { environment } from '../../../environments/environment.development';
 
 @Injectable({

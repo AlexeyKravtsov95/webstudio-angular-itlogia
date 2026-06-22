@@ -40,7 +40,7 @@
             font-weight: 600;
             color: $light-blue-color;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            padding-bottom: 10px;
           }
 
           .main-title {
@@ -50,7 +50,7 @@
             color: #fff;
             line-height: 130%;
             max-width: 610px;
-            margin-bottom: 20px;
+            padding-bottom: 20px;
 
             span {
               color: $light-blue-color;
@@ -62,7 +62,7 @@
             font-size: 24px;
             color: #fff;
             line-height: 130%;
-            margin-bottom: 50px;
+            padding-bottom: 50px;
           }
 
           .button {
@@ -99,7 +99,7 @@
   .container {
     .offers-title {
       @include head-lora-38;
-      margin-bottom: 40px;
+      padding-bottom: 40px;
     }
 
     .offers-items {
@@ -112,21 +112,21 @@
 
         .offer-image {
           border-radius: 5px;
-          margin-bottom: 15px;
+          padding-bottom: 15px;
         }
 
         .offer-title {
           font-size: 20px;
           font-weight: 500;
           color: $light-blue-color;
-          margin-bottom: 10px;
+          padding-bottom: 10px;
         }
 
         .offer-text {
           font-size: 14px;
           color: $dark-blue-color;
           line-height: 130%;
-          margin-bottom: 33px;
+          padding-bottom: 33px;
           height: 90px;
         }
 
@@ -171,7 +171,7 @@
     .about-wrapper {
       .about-title {
         @include head-lora-38;
-        margin-bottom: 20px;
+        padding-bottom: 20px;
       }
 
       .about-text {
@@ -179,7 +179,7 @@
         color: $dark-blue-color;
         line-height: 130%;
         max-width: 633px;
-        margin-bottom: 40px;
+        padding-bottom: 40px;
 
         span {
           font-weight: 500;
@@ -191,7 +191,7 @@
         font-weight: 400;
         font-size: 26px;
         color: $light-blue-color;
-        margin-bottom: 20px;
+        padding-bottom: 20px;
       }
 
       .about-items {
@@ -250,13 +250,13 @@
   .container {
     .articles-title {
       @include head-lora-38;
-      margin-bottom: 40px;
+      padding-bottom: 40px;
     }
 
     .articles-items {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 40px;
+      padding-bottom: 40px;
     }
     .articles-action {
       display: flex;
@@ -279,7 +279,7 @@
   .container {
     .reviews-title {
       @include head-lora-38;
-      margin-bottom: 20px;
+      padding-bottom: 40px;
     }
     .reviews-items {
       position: relative;
@@ -292,7 +292,7 @@
         .review-item-header {
           display: flex;
           align-items: center;
-          margin-bottom: 15px;
+          padding-bottom: 15px;
           .review-item-avatar {
             width: 60px;
             height: 60px;
@@ -329,19 +329,19 @@
       padding-top: 10px;
       .contact-item-title {
         @include head-lora-38;
-        margin-bottom: 20px;
+        padding-bottom: 20px;
       }
       .contact-subtitle {
         font-weight: 500;
         font-size: 20px;
         color: $light-blue-color;
-        margin-bottom: 10px;
+        padding-bottom: 10px;
       }
       .contact-text {
         font-size: 14px;
         color: $dark-blue-color;
         line-height: 130%;
-        margin-bottom: 20px;
+        padding-bottom: 20px;
         a {
           text-decoration: none;
           color: $dark-blue-color;

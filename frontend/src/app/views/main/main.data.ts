@@ -1,7 +1,7 @@
-import { BannerSlide } from '../../types/banner.interface';
-import { OfferInterface } from '../../types/offer.interface';
-import { AboutInterface } from '../../types/about.interface';
-import { ReviewsInterface } from '../../types/reviews.interface';
+import { BannerSlide } from '../../interfaces/banner.interface';
+import { OfferInterface } from '../../interfaces/offer.interface';
+import { AboutInterface } from '../../interfaces/about.interface';
+import { ReviewsInterface } from '../../interfaces/reviews.interface';
 
 export const BANNERS: BannerSlide[] = [
   {

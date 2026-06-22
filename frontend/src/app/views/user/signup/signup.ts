@@ -4,8 +4,8 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgStyle } from '@angular/common';
 import { AuthService } from '../../../core/auth-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DefaultResponse } from '../../../types/default.interface';
-import { LoginResponse } from '../../../types/login.interface';
+import { DefaultResponse } from '../../../interfaces/default.interface';
+import { LoginResponse } from '../../../interfaces/login.interface';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserServices } from '../../../shared/services/user-services';
 

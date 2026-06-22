@@ -3,8 +3,8 @@ import { inject, Injectable } from '@angular/core';
 import { AuthService } from './auth-service';
 import { catchError, finalize, Observable, switchMap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
-import { LoginResponse } from '../types/login.interface';
-import { DefaultResponse } from '../types/default.interface';
+import { LoginResponse } from '../interfaces/login.interface';
+import { DefaultResponse } from '../interfaces/default.interface';
 import { LoaderServices } from '../shared/services/loader-services';
 
 @Injectable()
