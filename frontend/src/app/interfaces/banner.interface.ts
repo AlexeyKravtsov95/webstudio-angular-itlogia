@@ -10,4 +10,5 @@ export interface BannerSlide {
   text?: string;
   image: string;
   imageDesc: string;
+  type: string;
 }

@@ -1,3 +1,5 @@
+import { CommentInterface } from './comment.interface';
+
 export interface ArticlesInterface {
   id: string;
   title: string;
@@ -6,4 +8,12 @@ export interface ArticlesInterface {
   date: string;
   category: string;
   url: string;
+  text?: string;
+  comments?: CommentInterface[];
+  commentsCount?: number;
+}
+
+export interface ArticleInterface {
+  pages: number;
+  items: ArticlesInterface[];
 }

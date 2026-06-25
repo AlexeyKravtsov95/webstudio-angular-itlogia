@@ -12,26 +12,28 @@ import {
   OverlayContainer,
   OverlayModule,
   OverlayRef,
-  Platform,
   PortalModule,
   TemplatePortal,
   _IdGenerator,
-  _animationsDisabled,
   _getFocusedElementPierceShadowDom,
   coerceNumberProperty,
   createBlockScrollStrategy,
   createGlobalPositionStrategy,
   createOverlayRef,
   hasModifierKey
-} from "./chunk-I5C4CBBB.js";
-import "./chunk-XXGVJZUR.js";
-import "./chunk-JA4P4RWY.js";
+} from "./chunk-JQQTEZ7T.js";
+import "./chunk-Q6UYBDGT.js";
+import {
+  Platform,
+  _animationsDisabled
+} from "./chunk-JAUNGIBC.js";
 import {
   BidiModule,
   Directionality
 } from "./chunk-QPHJPTPB.js";
-import "./chunk-HPDK25M7.js";
-import "./chunk-YIQPVJ6J.js";
+import "./chunk-NONPPHGR.js";
+import "./chunk-H45ERVKC.js";
+import "./chunk-WKBGKCDS.js";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,

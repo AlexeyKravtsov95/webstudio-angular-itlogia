@@ -1,32 +1,76 @@
 @import '../../../../../assets/styles/auth-form';
 @import '../../../../../assets/styles/variables';
+@import '../../../../../assets/styles/mixins';
 
-.server-error {
-  text-align: center;
-  margin-top: 10px;
-
-  small {
-    color: red;
-    font-size: 12px;
-  }
+.popup--success,
+.popup--consultation {
+  padding: 0 !important;
 }
 
-.popup-success {
-  padding: 95px 0;
+.popup--consultation .popup-form {
+  margin: 0 !important;
+}
+.popup--consultation .popup-title {
+  margin-bottom: 20px;
+}
+.popup--consultation .popup-form--consultation .auth-button {
+  margin-top: 20px;
+}
+.popup--consultation {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-
-  .popup-subtitle {
-    margin-top: 20px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    color: $dark-blue-color
+  .popup-title,
+  .popup-form {
+    width: 100%;
   }
-  .popup-success-button {
-    margin-top: 40px;
-    padding: 10px 20px;
+  .popup-title {
+    padding-top: 95px;
+    width: 406px;
+    line-height: 130%;
+    text-align: center;
+  }
+  .popup-form {
+    padding-bottom: 94px;
+  }
+}
+
+.popup-success {
+  min-height: 489px;
+  padding: 163px 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.popup-success-title {
+  @include head-lora-38;
+  margin: 0;
+  color: $light-blue-color;
+}
+.popup-success-subtitle {
+  margin-top: 20px;
+  max-width: 422px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  line-height: 130%;
+  color: $dark-blue-color;
+}
+.popup-success-button {
+  margin-top: 40px;
+  width: 422px;
+  height: 51px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+.server-error {
+  text-align: center;
+  margin-top: 10px;
+  small {
+    color: red;
+    font-size: 12px;
   }
 }

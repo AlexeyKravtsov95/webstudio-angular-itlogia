@@ -13,6 +13,7 @@ export const BANNERS: BannerSlide[] = [
     ],
     image: './images/pages/main/banner1.png',
     imageDesc: 'Banner1',
+    type: 'Продвижение',
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ export const BANNERS: BannerSlide[] = [
     text: 'Весь декабрь у нас действует акция на работу копирайтера.',
     image: './images/pages/main/banner2.png',
     imageDesc: 'Banner2',
+    type: 'Копирайтинг'
   },
   {
     id: 3,
@@ -29,6 +31,7 @@ export const BANNERS: BannerSlide[] = [
     text: 'Мы благодарим каждого, кто голосовал за нас!',
     image: './images/pages/main/banner3.png',
     imageDesc: 'Banner3',
+    type: 'Реклама'
   },
 ];
 

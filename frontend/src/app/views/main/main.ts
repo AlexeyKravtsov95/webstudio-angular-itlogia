@@ -11,7 +11,7 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { BannerSlide } from '../../interfaces/banner.interface';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgStyle } from '@angular/common';
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { Router, RouterLink } from '@angular/router';
 import { OfferInterface } from '../../interfaces/offer.interface';
 import { AboutInterface } from '../../interfaces/about.interface';

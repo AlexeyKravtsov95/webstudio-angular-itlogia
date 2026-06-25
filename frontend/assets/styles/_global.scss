@@ -89,8 +89,10 @@ app-layout > app-footer {
     background-position: center;
     background-size: contain;
 
-    top: 53%;
+    top: 50%;
     cursor: pointer;
+    font-size: 0;
+    line-height: 0;
   }
 
   .owl-theme .owl-carousel-inner .owl-prev {
