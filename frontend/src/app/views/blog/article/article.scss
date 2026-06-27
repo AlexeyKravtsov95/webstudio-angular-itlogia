@@ -1,0 +1,99 @@
+@import "../../../../../assets/styles/variables";
+@import "../../../../../assets/styles/mixins";
+
+.article {
+  padding-top: 80px;
+  padding-bottom: 120px;
+
+  .container {
+    .article-breadcrumbs {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      margin-bottom: 60px;
+
+      .breadcrumbs-base {
+        a {
+          text-decoration: none;
+          color: #B9D5FD;
+        }
+
+        &:after {
+          content: "/";
+          margin: 0 8px;
+          color: #B9D5FD;
+        }
+      }
+
+      .breadcrumbs-title {
+        font-weight: 500;
+        color: $light-blue-color;
+      }
+    }
+    .article-content {
+      padding-bottom: 60px;
+      .article-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 60px;
+
+        .article-head-text {
+          max-width: 607px;
+          .article-title {
+            @include head-lora-38();
+            margin-bottom: 40px;
+            line-height: 130%;
+          }
+          .article-text {
+            font-size: 20px;
+            line-height: 130%;
+            color: $light-blue-color;
+          }
+        }
+        .article-head-image {
+          width: 527px;
+          height: 320px;
+          background-size: cover;
+          background-position: center;
+          border-radius: 5px;
+        }
+      }
+      .article-body {
+        display: flex;
+        justify-content: space-between;
+        .article-body-text {
+          max-width: 818px;
+          .article-body-share {
+            display: flex;
+            .share-text {
+              font-weight: 500;
+              color: $light-blue-color;
+              margin-right: 20px;
+            }
+            .share-icon {
+              display: flex;
+              gap: 14px
+            }
+          }
+        }
+        .article-related {
+          display: flex;
+          flex-direction: column;
+          margin-top: 60px;
+          .article-related-title {
+            @include head-lora-26();
+            margin-bottom: 20px;
+          }
+          .articles-related-items {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            align-items: center;
+            justify-content: start;
+          }
+        }
+      }
+    }
+  }
+}

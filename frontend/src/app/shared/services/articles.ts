@@ -28,4 +28,12 @@ export class ArticlesService {
       params: httpParams,
     });
   }
+
+  getArticle(url: string): Observable<ArticlesInterface> {
+    return this.http.get<ArticlesInterface>(environment.api + 'articles/' + url);
+  }
+
+  getRelatedArticles(url: string): Observable<ArticlesInterface[]> {
+    return this.http.get<ArticlesInterface[]>(environment.api + 'articles/related/' + url);
+  }
 }

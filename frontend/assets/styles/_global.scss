@@ -235,3 +235,28 @@ app-layout > app-footer {
     transition: background-color 0.2s ease !important;
   }
 }
+
+.article-body-html-text {
+  margin-bottom: 60px; /* если нужен общий отступ блока */
+  h1 {
+    font-weight: 500;
+    font-size: 20px;
+    color: $light-blue-color;
+    margin-bottom: 20px;
+  }
+  h3 {
+    font-weight: 500;
+    color: $dark-blue-color;
+    margin-bottom: 0;
+  }
+  p {
+    font-size: 14px;
+    line-height: 130%;
+    color: $dark-blue-color;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  > :last-child {
+    margin-bottom: 0;
+  }
+}

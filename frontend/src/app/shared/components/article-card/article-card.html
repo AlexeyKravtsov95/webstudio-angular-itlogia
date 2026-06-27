@@ -12,5 +12,5 @@
     <div class="articles-item-text">
       {{ article.description }}
     </div>
-    <a href="#" class="articles-item-more">Читать далее</a>
+    <a [routerLink]="'/article/' + article.url" class="articles-item-more">Читать далее</a>
 </div>

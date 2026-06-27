@@ -17,8 +17,8 @@ export const routes: Routes = [
         loadChildren: () => import ('./views/user/auth.routes').then(m => m.authRoutes)
       },
       {
-        path: 'blog',
-        component: Blog,
+        path: '',
+        loadChildren: () => import('./views/blog/blog.routes').then(m => m.blogRoutes)
       }
     ]
   }
