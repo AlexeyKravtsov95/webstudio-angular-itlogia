@@ -3,7 +3,7 @@
 
 .article {
   padding-top: 80px;
-  padding-bottom: 120px;
+  padding-bottom: 60px;
 
   .container {
     .article-breadcrumbs {
@@ -31,7 +31,6 @@
       }
     }
     .article-content {
-      padding-bottom: 60px;
       .article-head {
         display: flex;
         justify-content: space-between;
@@ -64,8 +63,13 @@
         justify-content: space-between;
         .article-body-text {
           max-width: 818px;
+          .article-body-comments {
+            display: block;
+            width: 100%;
+          }
           .article-body-share {
             display: flex;
+            padding-bottom: 120px;
             .share-text {
               font-weight: 500;
               color: $light-blue-color;

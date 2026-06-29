@@ -4,7 +4,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgStyle } from '@angular/common';
 import { AuthService } from '../../../core/auth-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DefaultResponse } from '../../../interfaces/default.interface';
+import { DefaultResponseInterface } from '../../../interfaces/default.interface';
 import { LoginResponse } from '../../../interfaces/login.interface';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserServices } from '../../../shared/services/user-services';
@@ -52,10 +52,10 @@ export class Signup {
 
     if (this.signupForm.valid && name && email && password) {
       this.authService.signup(name, email, password).subscribe({
-        next: (data: DefaultResponse | LoginResponse) => {
+        next: (data: DefaultResponseInterface | LoginResponse) => {
           let error = null;
-          if ((data as DefaultResponse).error !== undefined) {
-            error = (data as DefaultResponse).message;
+          if ((data as DefaultResponseInterface).error !== undefined) {
+            error = (data as DefaultResponseInterface).message;
           }
 
           const loginResponse: LoginResponse = data as LoginResponse;

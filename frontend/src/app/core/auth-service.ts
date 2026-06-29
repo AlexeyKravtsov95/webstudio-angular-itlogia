@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, throwError } from 'rxjs';
-import { DefaultResponse } from '../interfaces/default.interface';
+import { DefaultResponseInterface } from '../interfaces/default.interface';
 import { LoginResponse } from '../interfaces/login.interface';
 import { environment } from '../../environments/environment.development';
 
@@ -25,8 +25,8 @@ export class AuthService {
     name: string,
     email: string,
     password: string,
-  ): Observable<DefaultResponse | LoginResponse> {
-    return this.http.post<DefaultResponse | LoginResponse>(environment.api + 'signup', {
+  ): Observable<DefaultResponseInterface | LoginResponse> {
+    return this.http.post<DefaultResponseInterface | LoginResponse>(environment.api + 'signup', {
       name: name,
       email: email,
       password: password,
@@ -37,8 +37,8 @@ export class AuthService {
     email: string,
     password: string,
     rememberMe: boolean,
-  ): Observable<DefaultResponse | LoginResponse> {
-    return this.http.post<DefaultResponse | LoginResponse>(environment.api + 'login', {
+  ): Observable<DefaultResponseInterface | LoginResponse> {
+    return this.http.post<DefaultResponseInterface | LoginResponse>(environment.api + 'login', {
       email: email,
       password: password,
       rememberMe: rememberMe,
@@ -81,20 +81,20 @@ export class AuthService {
     }
   }
 
-  refresh(): Observable<DefaultResponse | LoginResponse> {
+  refresh(): Observable<DefaultResponseInterface | LoginResponse> {
     const tokens = this.getTokens();
     if (tokens && tokens.refreshToken) {
-      return this.http.post<DefaultResponse>(environment.api + 'refresh', {
+      return this.http.post<DefaultResponseInterface>(environment.api + 'refresh', {
         refreshToken: tokens.refreshToken,
       });
     }
     throw throwError(() => 'Cant not refresh token');
   }
 
-  logout(): Observable<DefaultResponse> {
+  logout(): Observable<DefaultResponseInterface> {
     const tokens = this.getTokens();
     if (tokens && tokens.refreshToken) {
-      return this.http.post<DefaultResponse>(environment.api + 'logout', {
+      return this.http.post<DefaultResponseInterface>(environment.api + 'logout', {
         refreshToken: tokens.refreshToken,
       });
     }

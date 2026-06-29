@@ -4,7 +4,7 @@ import { AuthService } from './auth-service';
 import { catchError, finalize, Observable, switchMap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { LoginResponse } from '../interfaces/login.interface';
-import { DefaultResponse } from '../interfaces/default.interface';
+import { DefaultResponseInterface } from '../interfaces/default.interface';
 import { LoaderServices } from '../shared/services/loader-services';
 
 @Injectable()
@@ -49,8 +49,8 @@ export class AuthInterceptor implements HttpInterceptor {
     return this.authService.refresh().pipe(
       switchMap((result) => {
         let error = '';
-        if ((result as DefaultResponse).error !== undefined) {
-          error = (result as DefaultResponse).message;
+        if ((result as DefaultResponseInterface).error !== undefined) {
+          error = (result as DefaultResponseInterface).message;
         }
 
         const refreshResult = result as LoginResponse;

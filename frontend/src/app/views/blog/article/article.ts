@@ -4,10 +4,11 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ArticlesService } from '../../../shared/services/articles';
 import { environment } from '../../../../environments/environment.development';
 import { ArticleCard } from '../../../shared/components/article-card/article-card';
+import { Comments } from '../../../shared/components/comments/comments';
 
 @Component({
   selector: 'app-article',
-  imports: [RouterLink, ArticleCard],
+  imports: [RouterLink, ArticleCard, Comments],
   templateUrl: './article.html',
   styleUrl: './article.scss',
 })
@@ -34,8 +35,15 @@ export class Article implements OnInit {
   }
 
   ngOnInit() {
+    console.log('[Article] ngOnInit');
     this.activatedRoute.params.subscribe((params) => {
+      console.log('[Article] route params:', params);
       this.articlesServices.getArticle(params['url']).subscribe((item) => {
+        console.log('[Article] article loaded:', {
+          id: item.id,
+          url: item.url,
+          commentsCount: item.commentsCount,
+        });
         this.article.set(item);
       });
       this.articlesServices.getRelatedArticles(params['url']).subscribe((item) => {

@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { NgStyle } from '@angular/common';
-import { DefaultResponse } from '../../../interfaces/default.interface';
+import { DefaultResponseInterface } from '../../../interfaces/default.interface';
 import { LoginResponse } from '../../../interfaces/login.interface';
 import { AuthService } from '../../../core/auth-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -45,10 +45,10 @@ export class Login {
           !!this.loginForm.value.rememberMe,
         )
         .subscribe({
-          next: (data: LoginResponse | DefaultResponse) => {
+          next: (data: LoginResponse | DefaultResponseInterface) => {
             let error = null;
-            if ((data as DefaultResponse).error !== undefined) {
-              error = (data as DefaultResponse).message;
+            if ((data as DefaultResponseInterface).error !== undefined) {
+              error = (data as DefaultResponseInterface).message;
             }
 
             const loginResponse = data as LoginResponse;

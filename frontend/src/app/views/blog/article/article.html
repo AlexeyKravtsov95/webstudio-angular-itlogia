@@ -68,6 +68,11 @@
                 </svg>
               </div>
             </div>
+            @if (article().id) {
+              <div class="article-body-comments">
+                <app-comments [articleId]="article().id"></app-comments>
+              </div>
+            }
           </div>
           <div class="article-related">
             <div class="article-related-title">

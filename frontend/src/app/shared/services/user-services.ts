@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { UserInterface } from '../../interfaces/user.interface';
-import { DefaultResponse } from '../../interfaces/default.interface';
+import { DefaultResponseInterface } from '../../interfaces/default.interface';
 import { environment } from '../../../environments/environment.development';
 
 @Injectable({
@@ -15,8 +15,8 @@ export class UserServices {
   userName$: BehaviorSubject<string> = new BehaviorSubject<string>(this.userName);
   userInfo!: UserInterface;
 
-  getUserInfo(): Observable<UserInterface | DefaultResponse> {
-    return this.http.get<UserInterface | DefaultResponse>(environment.api + 'users');
+  getUserInfo(): Observable<UserInterface | DefaultResponseInterface> {
+    return this.http.get<UserInterface | DefaultResponseInterface>(environment.api + 'users');
   }
 
   getUserName(): string {
@@ -38,7 +38,7 @@ export class UserServices {
   getUserData() {
     this.getUserInfo().subscribe({
       next: (data) => {
-        if ((data as DefaultResponse).error !== undefined) return;
+        if ((data as DefaultResponseInterface).error !== undefined) return;
         this.userInfo = data as UserInterface;
         this.userNameData = this.userInfo.name;
       },
