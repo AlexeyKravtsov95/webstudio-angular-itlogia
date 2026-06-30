@@ -1,9 +1,10 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { RequestModalDataInterface, RequestPayload } from '../../../interfaces/request-modal.interface';
 import { RequestServices } from '../../services/request-services';
 import { NgStyle } from '@angular/common';
+import { DefaultResponseInterface } from '../../../interfaces/default.interface';
 
 @Component({
   selector: 'app-request-modal',
@@ -15,10 +16,12 @@ export class RequestModal implements OnInit {
   private fb: FormBuilder = inject(FormBuilder);
   private dialogRef: MatDialogRef<RequestModal> = inject(MatDialogRef<RequestModal>);
   private requestService: RequestServices = inject(RequestServices);
-  data = inject<RequestModalDataInterface>(MAT_DIALOG_DATA);
+  data: RequestModalDataInterface = inject<RequestModalDataInterface>(MAT_DIALOG_DATA);
 
-  state = signal<'form' | 'success' | 'error'>('form');
-  serverError = '';
+  state: WritableSignal<'form' | 'success' | 'error'> = signal<'form' | 'success' | 'error'>(
+    'form',
+  );
+  serverError: string = '';
 
   form = this.fb.group({
     service: [this.data.service ?? ''],
@@ -32,7 +35,7 @@ export class RequestModal implements OnInit {
     ],
   });
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (this.data.mode === 'order') {
       this.form.controls.service.setValidators(Validators.required);
 
@@ -44,7 +47,7 @@ export class RequestModal implements OnInit {
     this.form.controls.service.updateValueAndValidity();
   }
 
-  get showService() {
+  get showService(): boolean {
     return this.data.mode === 'order';
   }
 
@@ -59,7 +62,7 @@ export class RequestModal implements OnInit {
     return this.form.get('phone');
   }
 
-  submit() {
+  submit(): void {
     this.serverError = '';
     if (this.form.invalid) {
       this.form.markAllAsTouched();
@@ -79,7 +82,7 @@ export class RequestModal implements OnInit {
     }
 
     this.requestService.send(payload).subscribe({
-      next: (response) => {
+      next: (response: DefaultResponseInterface) => {
         if (response.error) {
           this.state.set('error');
           this.serverError = response.message;
@@ -94,7 +97,7 @@ export class RequestModal implements OnInit {
     });
   }
 
-  close() {
+  close(): void {
     this.dialogRef.close();
   }
 }

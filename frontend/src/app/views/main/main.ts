@@ -96,7 +96,7 @@ export class Main implements OnInit {
     ],
   });
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.articlesService.getTopArticles().subscribe((data: ArticlesInterface[]) => {
       this.articles.set(data);
     });
@@ -110,7 +110,7 @@ export class Main implements OnInit {
     return this.orderForm.get('phone');
   }
 
-  openOrderPopup(service?: string) {
+  openOrderPopup(service?: string): void {
     this.requestModalService.openOrder(
       service,
       this.offers.map((offer) => offer.title)

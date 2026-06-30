@@ -1,5 +1,4 @@
 import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
-import { NgOptimizedImage } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/auth-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -8,7 +7,7 @@ import { UserServices } from '../../services/user-services';
 
 @Component({
   selector: 'app-header',
-  imports: [NgOptimizedImage, RouterLink, MatMenuTrigger, MatMenu, MatMenuItem],
+  imports: [RouterLink, MatMenuTrigger, MatMenu, MatMenuItem],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
@@ -25,7 +24,7 @@ export class Header implements OnInit {
     this.userName.set(this.userService.getUserName());
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.authService.isLogged$.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
     });
@@ -36,17 +35,6 @@ export class Header implements OnInit {
     if (this.authService.getIsLoggedIn()) {
       this.userService.getUserData();
     }
-  }
-
-  logout() {
-    this.authService.logout().subscribe({
-      next: () => {
-        this.doLogout();
-      },
-      error: () => {
-        this.doLogout();
-      }
-    });
   }
 
   doLogout(): void {

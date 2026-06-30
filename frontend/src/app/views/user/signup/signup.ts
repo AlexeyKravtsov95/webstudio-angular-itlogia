@@ -45,7 +45,7 @@ export class Signup {
     return this.signupForm.get('agree');
   }
 
-  signup() {
+  signup(): void {
     const name = this.signupForm.value.name;
     const email = this.signupForm.value.email;
     const password = this.signupForm.value.password;

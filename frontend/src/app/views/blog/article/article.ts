@@ -34,7 +34,7 @@ export class Article implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     console.log('[Article] ngOnInit');
     this.activatedRoute.params.subscribe((params) => {
       console.log('[Article] route params:', params);

@@ -19,10 +19,11 @@ import { CommentsServices } from '../../services/comments-services';
 import { DefaultResponseInterface } from '../../../interfaces/default.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-comments',
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule, DatePipe],
   templateUrl: './comments.html',
   styleUrl: './comments.scss',
 })
@@ -50,7 +51,7 @@ export class Comments implements OnInit {
     text: ['', [Validators.minLength(10)]],
   });
 
-  userReactions = new Map<string, CommentReactionAction>();
+  userReactions: Map<string, CommentReactionAction> = new Map<string, CommentReactionAction>();
 
   get visibleComments(): CommentInterface[] {
     return this.allComments.slice(0, this.visibleCount);
@@ -208,7 +209,7 @@ export class Comments implements OnInit {
 
   onReport(comment: CommentInterface): void {
     if (!this.isLoggedIn) {
-      this._matSnackBar.open("Для отправки жалобы, войдите в аккаунт");
+      this._matSnackBar.open('Для отправки жалобы, войдите в аккаунт');
       return;
     }
 
@@ -224,7 +225,7 @@ export class Comments implements OnInit {
           return;
         }
 
-        this._matSnackBar.open("Жалоба отправлена");
+        this._matSnackBar.open('Жалоба отправлена');
       },
       error: (error: HttpErrorResponse) => {
         const message = error?.error?.message as string | undefined;

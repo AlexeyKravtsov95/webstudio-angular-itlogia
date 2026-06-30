@@ -11,7 +11,7 @@ import { RequestModalServices } from '../../services/request-modal-services';
 export class Footer {
   private requestModalService: RequestModalServices = inject(RequestModalServices);
 
-  openConsultation() {
+  openConsultation(): void {
     this.requestModalService.openConsultation();
   }
 

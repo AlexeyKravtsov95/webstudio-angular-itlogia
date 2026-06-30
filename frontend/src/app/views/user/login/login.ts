@@ -16,8 +16,8 @@ import { UserServices } from '../../../shared/services/user-services';
   styleUrl: './login.scss',
 })
 export class Login {
-  fb = inject(FormBuilder);
-  router = inject(Router);
+  fb: FormBuilder = inject(FormBuilder);
+  router: Router = inject(Router);
   authService: AuthService = inject(AuthService);
   _matSnackBar: MatSnackBar = inject(MatSnackBar);
   userService: UserServices = inject(UserServices);
@@ -36,7 +36,7 @@ export class Login {
     return this.loginForm.get('password');
   }
 
-  login() {
+  login(): void {
     if (this.loginForm.valid && this.loginForm.value.email && this.loginForm.value.password) {
       this.authService
         .login(
