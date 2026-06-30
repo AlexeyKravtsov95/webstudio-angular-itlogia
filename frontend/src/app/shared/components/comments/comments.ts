@@ -9,7 +9,7 @@ import { AuthService } from '../../../core/auth-service';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
-  AllCommentInterface, CommentAction,
+  AllCommentInterface,
   CommentInterface,
   CommentReaction,
   CommentReactionAction,
@@ -20,10 +20,11 @@ import { DefaultResponseInterface } from '../../../interfaces/default.interface'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-comments',
-  imports: [RouterLink, ReactiveFormsModule, DatePipe],
+  imports: [RouterLink, ReactiveFormsModule, DatePipe, MatProgressSpinner],
   templateUrl: './comments.html',
   styleUrl: './comments.scss',
 })
@@ -48,13 +49,17 @@ export class Comments implements OnInit {
   isSubmitting: boolean = false;
 
   userCommentsForm = this.formBuilder.group({
-    text: ['', [Validators.minLength(10)]],
+    text: ['', [Validators.required, Validators.minLength(10)]],
   });
 
   userReactions: Map<string, CommentReactionAction> = new Map<string, CommentReactionAction>();
 
   get visibleComments(): CommentInterface[] {
     return this.allComments.slice(0, this.visibleCount);
+  }
+
+  get text() {
+    return this.userCommentsForm.get('text');
   }
 
   get hasMoreComments(): boolean {
@@ -159,9 +164,15 @@ export class Comments implements OnInit {
   addComment(): void {
     if (!this.isLoggedIn || !this.articleId || this.isSubmitting) return;
 
-    const text: string = this.userCommentsForm.value.text?.trim() ?? '';
+    const text: string = this.text?.value?.trim() ?? '';
 
     if (!text) {
+      this.text?.setValue('');
+      this.text?.markAsTouched();
+      return;
+    }
+
+    if (this.userCommentsForm.invalid) {
       this.userCommentsForm.markAllAsTouched();
       return;
     }

@@ -56,6 +56,9 @@
         @for (article of articles(); track article.id) {
           <app-article-card [article]="article"></app-article-card>
         }
+        @if (articles().length === 0) {
+          <div>0 статей. Попробуйте измените параметры фильтров.</div>
+        }
       </div>
     </div>
     @if (pages.length > 1) {

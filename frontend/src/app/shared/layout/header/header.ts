@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../core/auth-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
@@ -7,7 +7,7 @@ import { UserServices } from '../../services/user-services';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, MatMenuTrigger, MatMenu, MatMenuItem],
+  imports: [RouterLink, MatMenuTrigger, MatMenu, MatMenuItem, RouterLinkActive],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })

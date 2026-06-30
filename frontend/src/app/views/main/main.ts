@@ -3,16 +3,13 @@ import {
   inject,
   OnInit,
   signal,
-  TemplateRef,
-  ViewChild,
   WritableSignal,
 } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { BannerSlide } from '../../interfaces/banner.interface';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgStyle } from '@angular/common';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { Router, RouterLink } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { RouterLink } from '@angular/router';
 import { OfferInterface } from '../../interfaces/offer.interface';
 import { AboutInterface } from '../../interfaces/about.interface';
 import { ABOUTS, BANNERS, OFFERS, REVIEWS } from './main.data';
@@ -28,7 +25,6 @@ import { RequestModalServices } from '../../shared/services/request-modal-servic
     CarouselModule,
     FormsModule,
     ReactiveFormsModule,
-    NgStyle,
     MatDialogModule,
     ArticleCard,
     RouterLink,
@@ -77,24 +73,8 @@ export class Main implements OnInit {
   reviews: ReviewsInterface[] = REVIEWS;
   articles: WritableSignal<ArticlesInterface[]> = signal<ArticlesInterface[]>([]);
 
-  @ViewChild('popup') popup!: TemplateRef<unknown>;
-  private fb: FormBuilder = inject(FormBuilder);
-  private dialogRef: MatDialogRef<any> | null = null;
-  private router: Router = inject(Router);
   private articlesService: ArticlesService = inject(ArticlesService);
   private requestModalService: RequestModalServices = inject(RequestModalServices);
-
-  orderForm = this.fb.group({
-    service: [''],
-    name: ['', [Validators.required, Validators.pattern(/^[А-ЯЁ][а-яё]*(?:\s[А-ЯЁ][а-яё]*)*$/)]],
-    phone: [
-      '',
-      [
-        Validators.required,
-        Validators.pattern(/^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/),
-      ],
-    ],
-  });
 
   ngOnInit(): void {
     this.articlesService.getTopArticles().subscribe((data: ArticlesInterface[]) => {
@@ -102,23 +82,10 @@ export class Main implements OnInit {
     });
   }
 
-  get name() {
-    return this.orderForm.get('name');
-  }
-
-  get phone() {
-    return this.orderForm.get('phone');
-  }
-
   openOrderPopup(service?: string): void {
     this.requestModalService.openOrder(
       service,
       this.offers.map((offer) => offer.title)
     );
-  }
-
-  closePopup(): void {
-    this.dialogRef?.close();
-    this.router.navigate(['/']).then();
   }
 }

@@ -30,6 +30,17 @@
     flex-direction: column;
     margin-bottom: 60px;
 
+    .comments-area-block.invalid {
+      border-color: red;
+    }
+    .error-messages {
+      small {
+        color: red;
+        font-size: 12px;
+        display: block;
+      }
+    }
+
     .comments-area-block {
       padding: 20px;
       width: 818px;
@@ -159,4 +170,11 @@
       }
     }
   }
+}
+
+.comments-block-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0;
 }
