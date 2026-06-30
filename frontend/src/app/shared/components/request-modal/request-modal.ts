@@ -30,7 +30,7 @@ export class RequestModal implements OnInit {
       '',
       [
         Validators.required,
-        Validators.pattern(/^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/),
+        Validators.pattern(/^(\+7|8)[\s-]?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/),
       ],
     ],
   });
